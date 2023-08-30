@@ -42,7 +42,7 @@ export default function NavBar({
         </IconButton>
 
         <img
-          src="/beautifi-logo-320X320.png"
+          src="./beautifi-logo-320X320.png"
           alt=""
           onClick={() => navigate("/")}
           style={{ height: 40, cursor: "pointer" }}
