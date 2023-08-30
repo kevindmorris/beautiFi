@@ -12,6 +12,8 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../../../assets/beautifi-logo-320X320.png";
+
 export default function NavBar({
   setOpen,
 }: {
@@ -42,7 +44,7 @@ export default function NavBar({
         </IconButton>
 
         <img
-          src="/beautifi-logo-320X320.png"
+          src={logo}
           alt=""
           onClick={() => navigate("/")}
           style={{ height: 40, cursor: "pointer" }}
