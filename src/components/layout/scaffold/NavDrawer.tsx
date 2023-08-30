@@ -15,6 +15,8 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../../../assets/beautifi-logo-320X320.png";
+
 export default function NavDrawer({
   open,
   setOpen,
@@ -53,11 +55,7 @@ function NavDrawerMobile({
     >
       <Toolbar>
         <Toolbar>
-          <img
-            src="/beautifi-logo-320X320.png"
-            alt=""
-            style={{ height: 40, cursor: "pointer" }}
-          />
+          <img src={logo} alt="" style={{ height: 40, cursor: "pointer" }} />
 
           <Divider orientation="vertical" flexItem />
 
