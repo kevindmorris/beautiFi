@@ -50,7 +50,7 @@ function NavDrawerMobile({
       onClose={() => setOpen(false)}
       sx={{
         zIndex: theme.zIndex.drawer + 5,
-        [`& .MuiDrawer-paper`]: { width: 240 },
+        [`& .MuiDrawer-paper`]: { width: 270 },
       }}
     >
       <Toolbar>
@@ -89,10 +89,8 @@ function NavDrawerMobile({
 
       <List>
         {[
-          { title: "Page 1", href: "page-1", icon: <LooksOne /> },
-          { title: "Page 2", href: "page-2", icon: <LooksTwo /> },
-          { title: "Page 3", href: "page-3", icon: <Looks3 /> },
-          { title: "Page 4", href: "page-4", icon: <Looks4 /> },
+          { title: "Annuities", href: "annuities", icon: <LooksOne /> },
+          { title: "Loans", href: "loans", icon: <LooksTwo /> },
         ].map((e) => (
           <MenuItem
             key={e.title}
@@ -130,11 +128,11 @@ function NavDrawerDesktop({
       variant="permanent"
       open={open}
       sx={{
-        width: open ? 240 : 52,
+        width: open ? 270 : 52,
         flexShrink: 0,
         transition: "width 0.2s ease",
         [`& .MuiDrawer-paper`]: {
-          width: open ? 240 : 52,
+          width: open ? 270 : 52,
           transition: "width 0.2s ease",
           overflowX: "hidden",
         },
@@ -152,10 +150,8 @@ function NavDrawerDesktop({
         }}
       >
         {[
-          { title: "Page 1", href: "page-1", icon: <LooksOne /> },
-          { title: "Page 2", href: "page-2", icon: <LooksTwo /> },
-          { title: "Page 3", href: "page-3", icon: <Looks3 /> },
-          { title: "Page 4", href: "page-4", icon: <Looks4 /> },
+          { title: "Annuities", href: "annuities", icon: <LooksOne /> },
+          { title: "Loans", href: "loans", icon: <LooksTwo /> },
         ].map((e) => (
           <MenuItem
             key={e.title}

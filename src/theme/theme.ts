@@ -18,6 +18,9 @@ const theme = createTheme({
     },
   },
   palette: { primary: { main: "#424798" } },
+  typography: {
+    fontFamily: "monospace",
+  },
 });
 
 export default theme;

@@ -6,7 +6,7 @@ import NavBar from "./scaffold/NavBar";
 import NavDrawer from "./scaffold/NavDrawer";
 
 export default function AppFrame() {
-  const [open, setOpen] = React.useState<boolean>(true);
+  const [open, setOpen] = React.useState<boolean>(false);
 
   return (
     <div style={{ display: "flex" }}>
@@ -14,10 +14,10 @@ export default function AppFrame() {
       <NavDrawer open={open} setOpen={setOpen} />
       <Paper
         sx={{
-          flex: "1 1 0%",
+          flex: 1,
           minHeight: "100vh",
           display: "flex",
-          overflowX: "hidden",
+          overflow: "hidden",
         }}
       >
         <Outlet />
