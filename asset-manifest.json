@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/beautiFi/static/js/main.e80532b9.js",
+    "index.html": "/beautiFi/index.html",
+    "main.e80532b9.js.map": "/beautiFi/static/js/main.e80532b9.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e80532b9.js"
+  ]
+}
