@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "./static/js/main.11618b7b.js",
-    "static/media/beautifi-logo-320X320.png": "./static/media/beautifi-logo-320X320.dde229278bc2b2b53c46.png",
-    "index.html": "./index.html",
-    "main.11618b7b.js.map": "./static/js/main.11618b7b.js.map"
+    "main.js": "/beautiFi/static/js/main.943f4b50.js",
+    "static/media/beautifi-logo-320X320.png": "/beautiFi/static/media/beautifi-logo-320X320.dde229278bc2b2b53c46.png",
+    "index.html": "/beautiFi/index.html",
+    "main.943f4b50.js.map": "/beautiFi/static/js/main.943f4b50.js.map"
   },
   "entrypoints": [
-    "static/js/main.11618b7b.js"
+    "static/js/main.943f4b50.js"
   ]
 }
