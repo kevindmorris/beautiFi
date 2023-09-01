@@ -1,10 +1,8 @@
-import { Looks3, Looks4, LooksOne, LooksTwo } from "@mui/icons-material";
 import {
   Box,
   Divider,
   Drawer,
   List,
-  ListItemIcon,
   ListItemText,
   MenuItem,
   Toolbar,
@@ -17,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../../../assets/beautifi-logo-320X320.png";
 
+const DRAWER_WIDTH = 300;
+
 export default function NavDrawer({
   open,
   setOpen,
@@ -26,7 +26,7 @@ export default function NavDrawer({
 }) {
   const theme = useTheme();
 
-  const small = useMediaQuery(theme.breakpoints.between("xs", "md"));
+  const small = useMediaQuery(theme.breakpoints.between("xs", "lg"));
 
   if (small) return <NavDrawerMobile open={open} setOpen={setOpen} />;
   return <NavDrawerDesktop open={open} setOpen={setOpen} />;
@@ -50,69 +50,50 @@ function NavDrawerMobile({
       onClose={() => setOpen(false)}
       sx={{
         zIndex: theme.zIndex.drawer + 5,
-        [`& .MuiDrawer-paper`]: { width: 270 },
+        [`& .MuiDrawer-paper`]: { width: DRAWER_WIDTH },
       }}
     >
       <Toolbar>
-        <Toolbar>
-          <img src={logo} alt="" style={{ height: 40, cursor: "pointer" }} />
-
-          <Divider orientation="vertical" flexItem />
-
-          <Box
-            sx={{
-              ml: theme.spacing(0.5),
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
+        <img
+          src={logo}
+          alt=""
+          onClick={() => {
+            navigate("/");
+            setOpen(false);
+          }}
+          style={{ height: 40, cursor: "pointer" }}
+        />
+        <Divider orientation="vertical" flexItem />
+        <Box
+          sx={{
+            ml: theme.spacing(0.5),
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="body2"
+            fontWeight="bold"
+            sx={{ color: theme.palette.text.secondary }}
           >
-            <Typography
-              variant="body2"
-              fontWeight="bold"
-              sx={{ color: theme.palette.text.secondary }}
-            >
-              beautiFi.io
-            </Typography>
-            <Typography
-              variant="caption"
-              fontStyle="italic"
-              sx={{ color: theme.palette.text.secondary }}
-            >
-              Calculators, but beautiful.
-            </Typography>
-          </Box>
-        </Toolbar>
+            beautiFi.io
+          </Typography>
+          <Typography
+            variant="caption"
+            fontStyle="italic"
+            sx={{ color: theme.palette.text.secondary }}
+          >
+            Calculators, but beautiful.
+          </Typography>
+        </Box>
       </Toolbar>
-
       <Divider />
-
-      <List>
-        {[
-          { title: "Annuities", href: "annuities", icon: <LooksOne /> },
-          { title: "Loans", href: "loans", icon: <LooksTwo /> },
-        ].map((e) => (
-          <MenuItem
-            key={e.title}
-            dense
-            onClick={() => {
-              navigate(e.href);
-              setOpen(false);
-            }}
-            sx={{
-              px: theme.spacing(2),
-              mx: theme.spacing(1),
-              borderRadius: theme.spacing(1),
-            }}
-          >
-            <ListItemIcon>{e.icon}</ListItemIcon>
-            <ListItemText secondary={e.title} />
-          </MenuItem>
-        ))}
-      </List>
+      <NavDrawerContents setOpen={setOpen} />
     </Drawer>
   );
 }
+
 function NavDrawerDesktop({
   open,
   setOpen,
@@ -120,57 +101,69 @@ function NavDrawerDesktop({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const theme = useTheme();
-  const navigate = useNavigate();
-
   return (
     <Drawer
       variant="permanent"
       open={open}
       sx={{
-        width: open ? 270 : 52,
+        width: DRAWER_WIDTH,
         flexShrink: 0,
-        transition: "width 0.2s ease",
         [`& .MuiDrawer-paper`]: {
-          width: open ? 270 : 52,
-          transition: "width 0.2s ease",
+          width: DRAWER_WIDTH,
           overflowX: "hidden",
         },
       }}
     >
       <Toolbar />
-
       <Divider />
-
-      <List
-        sx={{
-          [`& .MuiButtonBase-root`]: { minWidth: 36 },
-          [`& .MuiListItemIcon-root`]: { minWidth: 20, width: 20 },
-          [`& .MuiListItemText-root`]: { ml: theme.spacing(2) },
-        }}
-      >
-        {[
-          { title: "Annuities", href: "annuities", icon: <LooksOne /> },
-          { title: "Loans", href: "loans", icon: <LooksTwo /> },
-        ].map((e) => (
-          <MenuItem
-            key={e.title}
-            dense
-            onClick={() => {
-              navigate(e.href);
-            }}
-            sx={{
-              px: open ? theme.spacing(2) : theme.spacing(1),
-              mx: theme.spacing(1),
-              borderRadius: theme.spacing(1),
-              transition: "padding 0.2s ease",
-            }}
-          >
-            <ListItemIcon>{e.icon}</ListItemIcon>
-            {open ? <ListItemText secondary={e.title} /> : null}
-          </MenuItem>
-        ))}
-      </List>
+      <NavDrawerContents setOpen={setOpen} />
     </Drawer>
   );
 }
+
+const NavDrawerContents = ({
+  setOpen,
+}: {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const theme = useTheme();
+  const navigate = useNavigate();
+
+  return (
+    <List
+      sx={{
+        width: "100%",
+        maxWidth: 300,
+        [`& .MuiButtonBase-root`]: { minWidth: 36, whiteSpace: "wrap" },
+      }}
+    >
+      {[
+        {
+          primary: "Annuity",
+          secondary: "Forecast the growth of an annuity.",
+          href: "/annuity-forecast",
+        },
+      ].map((e) => (
+        <MenuItem
+          key={e.primary}
+          dense
+          onClick={() => {
+            navigate(e.href);
+            setOpen(false);
+          }}
+          sx={{
+            px: theme.spacing(2),
+            mx: theme.spacing(1),
+            borderRadius: theme.spacing(1),
+          }}
+        >
+          <ListItemText
+            primary={e.primary}
+            primaryTypographyProps={{ variant: "body1" }}
+            secondary={e.secondary}
+          />
+        </MenuItem>
+      ))}
+    </List>
+  );
+};

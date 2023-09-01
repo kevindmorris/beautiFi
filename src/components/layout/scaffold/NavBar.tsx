@@ -42,16 +42,13 @@ export default function NavBar({
         <IconButton size="small" onClick={() => setOpen((prev) => !prev)}>
           <Menu />
         </IconButton>
-
         <img
           src={logo}
           alt=""
           onClick={() => navigate("/")}
           style={{ height: 40, cursor: "pointer" }}
         />
-
         <Divider orientation="vertical" flexItem />
-
         <Box
           sx={{
             ml: theme.spacing(0.5),

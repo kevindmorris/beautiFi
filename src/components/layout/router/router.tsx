@@ -1,8 +1,8 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 
 import HomePage from "../../pages/home/HomePage";
 import AppFrame from "../AppFrame";
-import AnnuitiesPage from "../../pages/annuities/AnnuitiesPage";
+import AnnuityForecastPage from "../../pages/annuity/AnnuityForecastPage";
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
     element: <AppFrame />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "annuities", element: <AnnuitiesPage /> },
+      { path: "annuity-forecast", element: <AnnuityForecastPage /> },
     ],
   },
 ];

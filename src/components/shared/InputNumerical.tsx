@@ -8,6 +8,7 @@ const InputNumerical = (props: TextFieldProps) => (
     type="number"
     size="small"
     fullWidth
+    inputProps={props.inputProps}
     sx={{ my: 1 }}
   />
 );
