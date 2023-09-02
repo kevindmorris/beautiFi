@@ -3,6 +3,7 @@ import { createHashRouter } from "react-router-dom";
 import HomePage from "../../pages/home/HomePage";
 import AppFrame from "../AppFrame";
 import AnnuityForecastPage from "../../pages/annuity/AnnuityForecastPage";
+import AnnuityValuesPage from "../../pages/annuityValues/AnnuityValuesPage";
 
 const routes = [
   {
@@ -11,6 +12,7 @@ const routes = [
     children: [
       { path: "", element: <HomePage /> },
       { path: "annuity-forecast", element: <AnnuityForecastPage /> },
+      { path: "annuity-values", element: <AnnuityValuesPage /> },
     ],
   },
 ];

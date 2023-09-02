@@ -14,6 +14,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../../../assets/beautifi-logo-320X320.png";
+import routeDescriptions from "../../../utils/routeDescriptions";
 
 const DRAWER_WIDTH = 300;
 
@@ -137,13 +138,7 @@ const NavDrawerContents = ({
         [`& .MuiButtonBase-root`]: { minWidth: 36, whiteSpace: "wrap" },
       }}
     >
-      {[
-        {
-          primary: "Annuity",
-          secondary: "Forecast the growth of an annuity.",
-          href: "/annuity-forecast",
-        },
-      ].map((e) => (
+      {routeDescriptions.map((e) => (
         <MenuItem
           key={e.primary}
           dense

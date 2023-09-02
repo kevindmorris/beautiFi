@@ -1,8 +1,14 @@
 import PageContainer from "../PageContainer";
-
-import logo from "../../../assets/beautifi-logo-320X320.png";
-import { Divider, Paper, Typography, alpha, useTheme } from "@mui/material";
+import {
+  Divider,
+  Paper,
+  Stack,
+  Typography,
+  alpha,
+  useTheme,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import routeDescriptions from "../../../utils/routeDescriptions";
 
 export default function HomePage() {
   const theme = useTheme();
@@ -27,16 +33,10 @@ export default function HomePage() {
         </Typography>
       </div>
 
-      <Divider flexItem variant="inset" />
+      <Divider flexItem variant="middle" />
 
-      <div style={{ display: "flex" }}>
-        {[
-          {
-            primary: "Annuity",
-            secondary: "Forecast the growth of an annuity.",
-            href: "/annuity-forecast",
-          },
-        ].map((e) => (
+      <Stack direction={{ xs: "column", sm: "column", md: "row" }} spacing={2}>
+        {routeDescriptions.map((e) => (
           <Paper
             key={e.primary}
             variant="outlined"
@@ -45,6 +45,7 @@ export default function HomePage() {
               navigate(e.href);
             }}
             sx={{
+              width: 350,
               p: theme.spacing(2),
               borderRadius: theme.spacing(1),
               cursor: "pointer",
@@ -58,7 +59,7 @@ export default function HomePage() {
             <Typography color="text.secondary">{e.secondary}</Typography>
           </Paper>
         ))}
-      </div>
+      </Stack>
     </PageContainer>
   );
 }
