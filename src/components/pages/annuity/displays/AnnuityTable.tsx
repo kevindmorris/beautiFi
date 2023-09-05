@@ -6,14 +6,14 @@ import {
   GridValueFormatterParams,
 } from "@mui/x-data-grid";
 
-import USDollar from "../../../utils/USDollar";
+import USDollar from "../../../../utils/USDollar";
 
-export default function AnnuityForecastTable({
+export default function AnnuityTable({
   data,
-  interval,
+  contributionFrequency,
 }: {
   data: any;
-  interval: number;
+  contributionFrequency: number;
 }) {
   const columns: GridColDef[] = [
     {
@@ -22,7 +22,9 @@ export default function AnnuityForecastTable({
       minWidth: 150,
       flex: 1,
       valueFormatter: (params: GridValueFormatterParams<number>) =>
-        moment(params.value).format(interval === 1 ? "yyyy" : "yyyy MMMM"),
+        moment(params.value).format(
+          contributionFrequency === 1 ? "yyyy" : "yyyy MMMM"
+        ),
     },
     {
       field: "principal",
@@ -44,7 +46,7 @@ export default function AnnuityForecastTable({
     },
     {
       field: "balance",
-      headerName: "Balance",
+      headerName: "Future Value (FV)",
       headerAlign: "right",
       minWidth: 150,
       align: "right",

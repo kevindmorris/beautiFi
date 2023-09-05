@@ -7,16 +7,18 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { capitalize, useTheme } from "@mui/material";
+import { Typography, capitalize, useTheme } from "@mui/material";
 import moment from "moment";
-import USDollar from "../../../utils/USDollar";
+import USDollar from "../../../../utils/USDollar";
 
-export default function AnnuityForecastChart({
+export default function AnnuityChart({
   data,
-  interval,
+  contributionFrequency,
+  fv,
 }: {
   data: any;
-  interval: number;
+  contributionFrequency: number;
+  fv: number;
 }) {
   const theme = useTheme();
 
@@ -34,6 +36,9 @@ export default function AnnuityForecastChart({
         height: "80vh",
       }}
     >
+      <Typography variant="h6" textAlign="right">
+        {USDollar.format(fv)}
+      </Typography>
       <ResponsiveContainer>
         <AreaChart data={data}>
           <defs>
@@ -70,7 +75,9 @@ export default function AnnuityForecastChart({
             height={40}
             tickCount={10}
             tickFormatter={(value: any, index: number) =>
-              moment(value).format(interval === 1 ? "yyyy" : "yyyy MMMM")
+              moment(value).format(
+                contributionFrequency === 1 ? "yyyy" : "yyyy MMMM"
+              )
             }
           />
           <YAxis
@@ -85,7 +92,9 @@ export default function AnnuityForecastChart({
               capitalize(name),
             ]}
             labelFormatter={(label: any) =>
-              moment(label).format(interval === 1 ? "yyyy" : "yyyy MMMM")
+              moment(label).format(
+                contributionFrequency === 1 ? "yyyy" : "yyyy MMMM"
+              )
             }
           />
           <Area
