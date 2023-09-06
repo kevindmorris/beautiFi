@@ -16,7 +16,6 @@ export default function HomePage() {
   return (
     <PageContainer
       sx={{
-        pt: theme.spacing(22),
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -43,19 +42,24 @@ export default function HomePage() {
       >
         {[
           {
-            primary: "Forecaster",
+            primary: "Annuity Forecaster",
             secondary: "Forecast annuity growth.",
             href: "annuity-forecaster",
           },
           {
-            primary: "Present Value",
+            primary: "Annuity Present Value",
             secondary: "Calculate present value.",
             href: "annuity-present-value",
           },
           {
-            primary: "Future Value",
+            primary: "Annuity Future Value",
             secondary: "Calculate future value.",
             href: "annuity-future-value",
+          },
+          {
+            primary: "Loan Forecaster",
+            secondary: "Forecast loan balance.",
+            href: "loan-forecaster",
           },
         ].map((e) => (
           <Paper

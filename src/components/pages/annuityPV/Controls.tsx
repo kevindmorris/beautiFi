@@ -105,7 +105,7 @@ export default function Controls({
         inputProps={{ min: 0, step: 1000 }}
       />
       <Divider />
-      <Box style={{ display: "flex", gap: 1 }}>
+      <Box sx={{ display: "flex", gap: 1 }}>
         <InputNumerical
           label="Contribution"
           value={contribution || ""}

@@ -133,6 +133,7 @@ const NavDrawerContents = ({
   const navigate = useNavigate();
 
   const [openAnnuity, setOpenAnnuity] = React.useState(true);
+  const [openLoans, setOpenLoans] = React.useState(true);
 
   return (
     <List
@@ -177,6 +178,38 @@ const NavDrawerContents = ({
               primary: "Future Value",
               secondary: "Calculate future value.",
               href: "annuity-future-value",
+            },
+          ].map((e) => (
+            <MenuItem
+              key={e.primary}
+              dense
+              onClick={() => {
+                navigate(e.href);
+                setOpen(false);
+              }}
+            >
+              <ListItemText primary={e.primary} secondary={e.secondary} />
+            </MenuItem>
+          ))}
+        </List>
+      </Collapse>
+
+      <MenuItem onClick={() => setOpenLoans(!openLoans)}>
+        <ExpandMore
+          sx={{
+            transform: openAnnuity ? "rotate(0deg)" : "rotate(-90deg)",
+            transition: "transform 0.25s ease",
+          }}
+        />
+        <ListItemText primary="Loan" />
+      </MenuItem>
+      <Collapse in={openLoans} unmountOnExit>
+        <List dense disablePadding>
+          {[
+            {
+              primary: "Forecaster",
+              secondary: "Forecast loan balance.",
+              href: "loan-forecaster",
             },
           ].map((e) => (
             <MenuItem
