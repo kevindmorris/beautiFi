@@ -61,6 +61,11 @@ export default function HomePage() {
             secondary: "Forecast loan balance.",
             href: "loan-forecaster",
           },
+          {
+            primary: "Monthly Payment",
+            secondary: "Calculate monthly payment.",
+            href: "loan-monthly-payment",
+          },
         ].map((e) => (
           <Paper
             key={e.primary}

@@ -211,6 +211,16 @@ const NavDrawerContents = ({
               secondary: "Forecast loan balance.",
               href: "loan-forecaster",
             },
+            {
+              primary: "Monthly Payment",
+              secondary: "Calculate monthly payment.",
+              href: "loan-monthly-payment",
+            },
+            {
+              primary: "Term",
+              secondary: "Calculate term.",
+              href: "loan-term",
+            },
           ].map((e) => (
             <MenuItem
               key={e.primary}
