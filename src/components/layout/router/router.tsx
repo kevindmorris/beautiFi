@@ -1,8 +1,10 @@
 import { createHashRouter } from "react-router-dom";
 
-import HomePage from "../../pages/home/HomePage";
 import AppFrame from "../AppFrame";
-import AnnuityPage from "../../pages/annuity/AnnuityPage";
+import HomePage from "../../pages/home/HomePage";
+import AnnuityForecasterPage from "../../pages/annuityForecaster/AnnuityForecasterPage";
+import AnnuityPVPage from "../../pages/annuityPV/AnnuityPVPage";
+import AnnuityFVPage from "../../pages/annuityFV/AnnuityFVPage";
 
 const routes = [
   {
@@ -10,7 +12,9 @@ const routes = [
     element: <AppFrame />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "annuity", element: <AnnuityPage /> },
+      { path: "annuity-forecaster", element: <AnnuityForecasterPage /> },
+      { path: "annuity-present-value", element: <AnnuityPVPage /> },
+      { path: "annuity-future-value", element: <AnnuityFVPage /> },
     ],
   },
 ];

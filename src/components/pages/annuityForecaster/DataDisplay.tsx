@@ -1,19 +1,15 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import USDollar from "../../../utils/USDollar";
+import { Box } from "@mui/material";
 import moment from "moment";
+import _ from "lodash";
+
 import {
   calculateAnnuityDueFV,
-  calculateAnnuityDuePV,
   calculateAnnuityOrdinaryFV,
-  calculateAnnuityOrdinaryPV,
-} from "./utils";
-import AnnuityValues from "./displays/AnnuityValues";
-import _ from "lodash";
-import AnnuityTable from "./displays/AnnuityTable";
-import AnnuityChart from "./displays/AnnuityChart";
+} from "../../../utils/annuityFormulas";
+import Chart from "./Chart";
+import Table from "./Table";
 
-export default function AnnuityDataDisplay({
+export default function DataDisplay({
   view,
   type,
   initialAmount,
@@ -39,8 +35,6 @@ export default function AnnuityDataDisplay({
     1;
   const r = Math.pow(1 + effectiveInterestRate, 1 / contributionFrequency) - 1;
 
-  let fv: number;
-  let pv: number;
   let data: Array<{
     index: number;
     date: number;
@@ -49,18 +43,6 @@ export default function AnnuityDataDisplay({
     interest: number;
   }> = [];
   if (type === "ordinary") {
-    pv = calculateAnnuityOrdinaryPV({
-      P: initialAmount,
-      PMT: contribution,
-      r: r,
-      n: contributionPeriods,
-    });
-    fv = calculateAnnuityOrdinaryFV({
-      P: initialAmount,
-      PMT: contribution,
-      r: r,
-      n: contributionPeriods,
-    });
     data = periodsArray.map((d) => {
       let date = moment()
         .add(d, contributionFrequency === 1 ? "years" : "months")
@@ -82,18 +64,6 @@ export default function AnnuityDataDisplay({
       };
     });
   } else {
-    pv = calculateAnnuityDuePV({
-      P: initialAmount,
-      PMT: contribution,
-      r: r,
-      n: contributionPeriods,
-    });
-    fv = calculateAnnuityDueFV({
-      P: initialAmount,
-      PMT: contribution,
-      r: r,
-      n: contributionPeriods,
-    });
     data = periodsArray.map((d) => {
       let date = moment()
         .add(d, contributionFrequency === 1 ? "years" : "months")
@@ -118,30 +88,17 @@ export default function AnnuityDataDisplay({
 
   const content = () => {
     switch (view) {
+      default:
       case "chart":
         return (
-          <AnnuityChart
+          <Chart
             data={data}
             contributionFrequency={contributionFrequency}
-            fv={fv}
           />
         );
       case "table":
         return (
-          <AnnuityTable
-            data={data}
-            contributionFrequency={contributionFrequency}
-          />
-        );
-      case "values":
-      default:
-        return (
-          <AnnuityValues
-            periods={contributionPeriods}
-            contributionFrequency={contributionFrequency}
-            pv={pv}
-            fv={fv}
-          />
+          <Table data={data} contributionFrequency={contributionFrequency} />
         );
     }
   };

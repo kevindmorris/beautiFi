@@ -9,16 +9,15 @@ import {
 } from "recharts";
 import { Typography, capitalize, useTheme } from "@mui/material";
 import moment from "moment";
-import USDollar from "../../../../utils/USDollar";
 
-export default function AnnuityChart({
+import USDollar from "../../../utils/USDollar";
+
+export default function Chart({
   data,
   contributionFrequency,
-  fv,
 }: {
   data: any;
   contributionFrequency: number;
-  fv: number;
 }) {
   const theme = useTheme();
 
@@ -36,8 +35,8 @@ export default function AnnuityChart({
         height: "80vh",
       }}
     >
-      <Typography variant="h6" textAlign="right">
-        {USDollar.format(fv)}
+      <Typography variant="h5" textAlign="right">
+        {USDollar.format(data[data.length - 1].balance)}
       </Typography>
       <ResponsiveContainer>
         <AreaChart data={data}>
@@ -79,12 +78,14 @@ export default function AnnuityChart({
                 contributionFrequency === 1 ? "yyyy" : "yyyy MMMM"
               )
             }
+            style={{ fontFamily: "monospace" }}
           />
           <YAxis
             width={yAxisWidth}
             tickFormatter={(value: any, index: number) =>
               USDollar.format(value)
             }
+            style={{ fontFamily: "monospace" }}
           />
           <Tooltip
             formatter={(value: any, name: any) => [
@@ -96,6 +97,8 @@ export default function AnnuityChart({
                 contributionFrequency === 1 ? "yyyy" : "yyyy MMMM"
               )
             }
+            itemStyle={{ fontFamily: "monospace" }}
+            contentStyle={{ fontFamily: "monospace" }}
           />
           <Area
             type="monotone"

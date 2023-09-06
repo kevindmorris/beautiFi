@@ -6,9 +6,9 @@ import {
   GridValueFormatterParams,
 } from "@mui/x-data-grid";
 
-import USDollar from "../../../../utils/USDollar";
+import USDollar from "../../../utils/USDollar";
 
-export default function AnnuityTable({
+export default function Table({
   data,
   contributionFrequency,
 }: {

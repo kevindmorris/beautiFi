@@ -1,8 +1,10 @@
 import {
   Box,
+  Collapse,
   Divider,
   Drawer,
   List,
+  ListItem,
   ListItemText,
   MenuItem,
   Toolbar,
@@ -14,7 +16,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../../../assets/beautifi-logo-320X320.png";
-import routeDescriptions from "../../../utils/routeDescriptions";
+import { ExpandMore } from "@mui/icons-material";
 
 const DRAWER_WIDTH = 300;
 
@@ -130,35 +132,66 @@ const NavDrawerContents = ({
   const theme = useTheme();
   const navigate = useNavigate();
 
+  const [openAnnuity, setOpenAnnuity] = React.useState(true);
+
   return (
     <List
       sx={{
         width: "100%",
         maxWidth: 300,
-        [`& .MuiButtonBase-root`]: { minWidth: 36, whiteSpace: "wrap" },
+        [`& .MuiButtonBase-root`]: {
+          minWidth: 36,
+          whiteSpace: "wrap",
+          px: theme.spacing(2),
+          mx: theme.spacing(1),
+          borderRadius: theme.spacing(1),
+        },
+        [`& .MuiListItemText-root`]: {
+          mx: theme.spacing(1),
+        },
       }}
     >
-      {routeDescriptions.map((e) => (
-        <MenuItem
-          key={e.primary}
-          dense
-          onClick={() => {
-            navigate(e.href);
-            setOpen(false);
-          }}
+      <MenuItem onClick={() => setOpenAnnuity(!openAnnuity)}>
+        <ExpandMore
           sx={{
-            px: theme.spacing(2),
-            mx: theme.spacing(1),
-            borderRadius: theme.spacing(1),
+            transform: openAnnuity ? "rotate(0deg)" : "rotate(-90deg)",
+            transition: "transform 0.25s ease",
           }}
-        >
-          <ListItemText
-            primary={e.primary}
-            primaryTypographyProps={{ variant: "body1" }}
-            secondary={e.secondary}
-          />
-        </MenuItem>
-      ))}
+        />
+        <ListItemText primary="Annuity" />
+      </MenuItem>
+      <Collapse in={openAnnuity} unmountOnExit>
+        <List dense disablePadding>
+          {[
+            {
+              primary: "Forecaster",
+              secondary: "Forecast annuity growth.",
+              href: "annuity-forecaster",
+            },
+            {
+              primary: "Present Value",
+              secondary: "Calculate present value.",
+              href: "annuity-present-value",
+            },
+            {
+              primary: "Future Value",
+              secondary: "Calculate future value.",
+              href: "annuity-future-value",
+            },
+          ].map((e) => (
+            <MenuItem
+              key={e.primary}
+              dense
+              onClick={() => {
+                navigate(e.href);
+                setOpen(false);
+              }}
+            >
+              <ListItemText primary={e.primary} secondary={e.secondary} />
+            </MenuItem>
+          ))}
+        </List>
+      </Collapse>
     </List>
   );
 };

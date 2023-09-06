@@ -4,7 +4,6 @@ import {
   Divider,
   FormControl,
   FormControlLabel,
-  FormHelperText,
   InputLabel,
   MenuItem,
   Radio,
@@ -14,11 +13,11 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
-  useTheme,
 } from "@mui/material";
+
 import InputNumerical from "../../shared/InputNumerical";
 
-export default function AnnuityControls({
+export default function Controls({
   view,
   setView,
   type,
@@ -53,8 +52,6 @@ export default function AnnuityControls({
   interestRateFrequency: number;
   setInterestRateFrequency: React.Dispatch<React.SetStateAction<number>>;
 }) {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -63,7 +60,7 @@ export default function AnnuityControls({
         maxWidth: { xs: "100%", sm: "100%", md: 400 },
         display: "flex",
         flexDirection: "column",
-        gap: theme.spacing(1),
+        gap: 1,
       }}
     >
       <ToggleButtonGroup
@@ -82,7 +79,6 @@ export default function AnnuityControls({
       >
         <ToggleButton value="chart">chart</ToggleButton>
         <ToggleButton value="table">table</ToggleButton>
-        <ToggleButton value="values">pv/fv</ToggleButton>
       </ToggleButtonGroup>
       <Divider />
       <FormControl>
@@ -134,7 +130,7 @@ export default function AnnuityControls({
         inputProps={{ min: 0, step: 1000 }}
       />
       <Divider />
-      <div style={{ display: "flex", gap: theme.spacing(1) }}>
+      <Box sx={{ display: "flex", gap: 1 }}>
         <InputNumerical
           label="Contribution"
           value={contribution || ""}
@@ -158,7 +154,7 @@ export default function AnnuityControls({
             <MenuItem value={12}>Monthly</MenuItem>
           </Select>
         </FormControl>
-      </div>
+      </Box>
       <InputNumerical
         label="Number of Contributions"
         value={contributionPeriods || ""}
@@ -170,7 +166,7 @@ export default function AnnuityControls({
       />
 
       <Divider />
-      <div style={{ display: "flex", gap: theme.spacing(1) }}>
+      <Box sx={{ display: "flex", gap: 1 }}>
         <InputNumerical
           label="Interest Rate"
           value={interestRate || ""}
@@ -197,7 +193,7 @@ export default function AnnuityControls({
             <MenuItem value={365}>Daily</MenuItem>
           </Select>
         </FormControl>
-      </div>
+      </Box>
     </Box>
   );
 }

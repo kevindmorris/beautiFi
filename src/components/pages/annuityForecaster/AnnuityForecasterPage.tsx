@@ -1,35 +1,31 @@
 import React from "react";
+
 import PageContainer from "../PageContainer";
-import { useTheme } from "@mui/material";
-import AnnuityControls from "./AnnuityControls";
-import AnnuityDataDisplay from "./AnnuityDataDisplay";
+import Controls from "./Controls";
+import DataDisplay from "./DataDisplay";
 
-export default function AnnuityPage() {
-  const theme = useTheme();
-
+export default function AnnuityForecasterPage() {
   const [view, setView] = React.useState<string>("chart");
-
   const [type, setType] = React.useState<string>("ordinary");
-
   const [initialAmount, setInitialAmount] = React.useState<number>(1000);
   const [contribution, setContribution] = React.useState<number>(100);
   const [contributionFrequency, setContributionFrequency] =
     React.useState<number>(12);
   const [contributionPeriods, setContributionPeriods] =
     React.useState<number>(12);
-  const [interestRate, setInterestRate] = React.useState<number>(7);
+  const [interestRate, setInterestRate] = React.useState<number>(10);
   const [interestRateFrequency, setInterestRateFrequency] =
-    React.useState<number>(12);
+    React.useState<number>(1);
 
   return (
     <PageContainer
       sx={{
         display: "flex",
         flexDirection: { xs: "column", sm: "column", md: "row" },
-        gap: theme.spacing(3),
+        gap: 3,
       }}
     >
-      <AnnuityControls
+      <Controls
         view={view}
         setView={setView}
         type={type}
@@ -47,7 +43,7 @@ export default function AnnuityPage() {
         interestRateFrequency={interestRateFrequency}
         setInterestRateFrequency={setInterestRateFrequency}
       />
-      <AnnuityDataDisplay
+      <DataDisplay
         view={view}
         type={type}
         initialAmount={initialAmount || 0}

@@ -8,7 +8,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import routeDescriptions from "../../../utils/routeDescriptions";
 
 export default function HomePage() {
   const theme = useTheme();
@@ -35,8 +34,30 @@ export default function HomePage() {
 
       <Divider flexItem variant="middle" />
 
-      <Stack direction={{ xs: "column", sm: "column", md: "row" }} spacing={2}>
-        {routeDescriptions.map((e) => (
+      <Stack
+        direction={{ xs: "column", sm: "column", md: "row" }}
+        spacing={2}
+        flexWrap="wrap"
+        useFlexGap
+        justifyContent="center"
+      >
+        {[
+          {
+            primary: "Forecaster",
+            secondary: "Forecast annuity growth.",
+            href: "annuity-forecaster",
+          },
+          {
+            primary: "Present Value",
+            secondary: "Calculate present value.",
+            href: "annuity-present-value",
+          },
+          {
+            primary: "Future Value",
+            secondary: "Calculate future value.",
+            href: "annuity-future-value",
+          },
+        ].map((e) => (
           <Paper
             key={e.primary}
             variant="outlined"
