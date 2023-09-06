@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/beautiFi/static/js/main.5a6a601d.js",
+    "main.js": "/beautiFi/static/js/main.70e5a9f4.js",
     "static/media/beautifi-logo-320X320.png": "/beautiFi/static/media/beautifi-logo-320X320.dde229278bc2b2b53c46.png",
     "index.html": "/beautiFi/index.html",
-    "main.5a6a601d.js.map": "/beautiFi/static/js/main.5a6a601d.js.map"
+    "main.70e5a9f4.js.map": "/beautiFi/static/js/main.70e5a9f4.js.map"
   },
   "entrypoints": [
-    "static/js/main.5a6a601d.js"
+    "static/js/main.70e5a9f4.js"
   ]
 }
