@@ -197,7 +197,7 @@ const NavDrawerContents = ({
       <MenuItem onClick={() => setOpenLoans(!openLoans)}>
         <ExpandMore
           sx={{
-            transform: openAnnuity ? "rotate(0deg)" : "rotate(-90deg)",
+            transform: openLoans ? "rotate(0deg)" : "rotate(-90deg)",
             transition: "transform 0.25s ease",
           }}
         />
